@@ -1,0 +1,17 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<br>
+
+<form action="" method="POST">
+  <input type="text" class="message" placeholder="Enter message" />
+  <input type="submit" value="Send message" />
+  <button type="button" id="getNewMessage">Get new message</button>
+</form>
+
+<br><br>
+
+<div class="message_holder"></div>
+
+{% endblock %}

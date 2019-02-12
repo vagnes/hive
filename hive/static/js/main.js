@@ -11,8 +11,14 @@ socket.on("connect", function () {
 		$("input.message").val("").focus()
 	})
 
-	var button = $("#getNewMessage").on("click", function () {
+	var getNewMessage = $("#getNewMessage").on("click", function () {
 		socket.emit("fetch new message")
+	})
+
+	var addLike = $("#addLike").on("click", function () {
+		socket.emit("add like", {
+			id: 1
+		})
 	})
 })
 

@@ -7,8 +7,10 @@ class Message(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     message = db.Column(db.String(500), nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False,
-                            default=datetime.utcnow)
+    likes = db.Column(db.Integer, default=0)
+    reports = db.Column(db.Integer, default=0)
+    date_created = db.Column(db.DateTime, nullable=False,
+                             default=datetime.utcnow)
 
 
 db.create_all()

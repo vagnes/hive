@@ -1,9 +1,8 @@
-from flask import render_template, request
-from hive import app, db, socketio
+from flask import render_template, request, jsonify
+from hive import app, socketio
 from hive.forms import MessageForm
 from hive.models import Message
 from hive.queries import Query
-# from hive.nlp import NLP
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -15,17 +14,19 @@ def home():
 
 
 @socketio.on("send message")
-def handle_my_custom_event(json, methods=["GET", "POST"]):
-    print("----------------------------------")
+def send_message(json, methods=["GET", "POST"]):
     if "message" in json:
         recieved_message = json["message"]
-        message = Message(message=recieved_message)
-        db.session.add(message)
-        db.session.commit()
+        Query.add_message(recieved_message)
 
 
 @socketio.on("fetch new message")
 def fetch_new_message(methods=["GET", "POST"]):
-    message = Query.random_message()
-    json = {"message": f"{message}"}
-    socketio.emit("send new message to client", json)
+    row = Query.random_row()
+    socketio.emit("send new message to client", row)
+
+
+@socketio.on("add like")
+def send_like(json, methods=["GET", "POST"]):
+    msg_id = json["id"]
+    Query.add_like(msg_id)

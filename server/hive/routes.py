@@ -1,14 +1,15 @@
-from flask import render_template, request, jsonify
+from flask import jsonify
 from hive import app, socketio
 from hive.forms import MessageForm
 from hive.models import Message
 from hive.queries import Query
 
+# dummy route
 
-@app.route("/", methods=["GET", "POST"])
+
+@app.route("/ping", methods=["GET", "POST"])
 def home():
-    form = MessageForm(request.form)
-    return render_template("pages/home.html", form=form)
+    return jsonify("pong")
 
 # Sockets
 

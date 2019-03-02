@@ -14,20 +14,20 @@ def home():
 # Sockets
 
 
-@socketio.on("send message")
+@socketio.on("send_message")
 def send_message(json, methods=["GET", "POST"]):
     if "message" in json:
         recieved_message = json["message"]
         Query.add_message(recieved_message)
 
 
-@socketio.on("fetch new message")
+@socketio.on("fetch_new_message")
 def fetch_new_message(methods=["GET", "POST"]):
     row = Query.random_row()
     socketio.emit("send new message to client", row)
 
 
-@socketio.on("add like")
+@socketio.on("add_like")
 def add_like(json, methods=["GET", "POST"]):
     msg_id = json["id"]
     Query.add_like(msg_id)

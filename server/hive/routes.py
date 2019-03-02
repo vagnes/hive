@@ -27,6 +27,6 @@ def fetch_new_message(methods=["GET", "POST"]):
 
 
 @socketio.on("add like")
-def send_like(json, methods=["GET", "POST"]):
+def add_like(json, methods=["GET", "POST"]):
     msg_id = json["id"]
     Query.add_like(msg_id)

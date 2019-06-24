@@ -6,7 +6,7 @@ from hive import db
 class Query(object):
 
     @staticmethod
-    def add_message(message):
+    def add_msg(message):
         message = Message(message=message)
         db.session.add(message)
         db.session.commit()
@@ -26,3 +26,17 @@ class Query(object):
         row.likes += 1
         db.session.add(row)
         db.session.commit()
+
+    @staticmethod
+    def add_report(msg_id):
+        row = Message.query.filter_by(id=msg_id).one()
+        row.reports += 1
+        db.session.add(row)
+        db.session.commit()
+
+    @staticmethod
+    def get_stats(msg_id):
+        row = Message.query.filter_by(id=msg_id).one()
+        return {"likes": row.likes,
+                "reports": row.reports
+                }

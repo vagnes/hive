@@ -38,17 +38,40 @@ export default {
       this.$socket.emit("add_report", {
         id: this.id
       });
+    },
+    updateStats: function() {
+      this.$socket.emit(
+        "update_stats",
+        {
+          id: this.id
+        },
+        data => {
+          this.likes = data.likes;
+          this.reports = data.reports;
+        }
+      );
     }
   },
   mounted: function() {
-    this.sockets.subscribe("msg_to_client", data => {
+    // this.sockets.subscribe("msg_to_client", data => {
+    //   this.id = data.id;
+    //   this.msg = data.message;
+    //   this.likes = data.likes;
+    //   this.reports = data.reports;
+    //   this.date_created = data.date_created;
+    // });
+    this.$socket.emit("fetch_new_msg", data => {
       this.id = data.id;
       this.msg = data.message;
       this.likes = data.likes;
       this.reports = data.reports;
       this.date_created = data.date_created;
     });
-    this.$socket.emit("fetch_new_msg");
+  },
+  created: function() {
+    setInterval(() => {
+      this.updateStats();
+    }, 7000);
   }
 };
 </script>

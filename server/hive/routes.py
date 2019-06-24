@@ -16,16 +16,16 @@ def home():
 @socketio.on("send_msg")
 def send_msg(json, methods=["GET", "POST"]):
     if "msg" in json:
-        recieved_msg = json["msg"]
-        print(recieved_msg)
+        msg = json["msg"]
+        Query.add_msg(msg)
 
 
 @socketio.on("fetch_new_msg")
 def fetch_new_msg(methods=["GET", "POST"]):
     try:
         row = Query.random_row()
-        print(row)
         socketio.emit("msg_to_client", row)
+        return row
     except AttributeError as e:
         print(f"{e}")
 
@@ -42,7 +42,8 @@ def add_report(json, methods=["GET", "POST"]):
     Query.add_report(msg_id)
 
 
-def update_stats(msg_id):
+@socketio.on("update_stats")
+def update_stats(json, methods=["GET", "POST"]):
+    msg_id = json["id"]
     stats = Query.get_stats(msg_id)
-    socketio.emit("update_stats", )
-# update parameters, likes; reports etc
+    return stats

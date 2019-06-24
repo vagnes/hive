@@ -1,12 +1,14 @@
 <template>
   <div class="container">
     <h1>HIVE</h1>
-    <p v-if="isConnected">Connected</p>
-    <p v-else>Disconnected</p>
+    <p class="connected" v-if="isConnected">Connected</p>
+    <p class="disconnected" v-else>Disconnected</p>
 
     <!-- <button v-on:click="fetchMessage" class="btn">Fetch message</button> -->
     <inputField/>
     <div class="postContainer">
+      <post/>
+      <post/>
       <post/>
     </div>
   </div>
@@ -32,9 +34,19 @@ export default {
     }
   },
   components: { Post, InputField },
-  methods: {}
+  methods: {},
+  beforeDestroy() {
+    this.disconnect();
+  }
 };
 </script>
 
 <style scoped>
+.connected {
+  color: green;
+}
+
+.disconnected {
+  color: red;
+}
 </style>

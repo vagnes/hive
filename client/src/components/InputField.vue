@@ -17,7 +17,8 @@ export default {
   },
   methods: {
     sendMsg: function() {
-      this.$socket.emit("send_message", { msg: this.msg });
+      this.$socket.emit("send_msg", { msg: this.msg });
+      this.msg = "";
     }
   }
 };

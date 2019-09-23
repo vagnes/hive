@@ -83,3 +83,4 @@ venv.bak/
 
 *.db
 .vscode
+client/android

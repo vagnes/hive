@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "thisisatestkeyfortheloveofgodchangeit"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 db = SQLAlchemy(app)
 CORS(app)
 

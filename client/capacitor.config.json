@@ -1,0 +1,7 @@
+{
+  "appId": "com.qore.hive",
+  "appName": "Hive",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist"
+}

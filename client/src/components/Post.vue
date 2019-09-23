@@ -71,7 +71,7 @@ export default {
   created: function() {
     setInterval(() => {
       this.updateStats();
-    }, 7000);
+    }, 1000);
   }
 };
 </script>

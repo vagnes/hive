@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueSocketIO from "vue-socket.io";
-import "normalize.css";
+import VueSocketIO from 'vue-socket.io';
+import 'normalize.css';
+import router from './router'
+import Ionic from '@ionic/vue';
+import '@ionic/core/css/ionic.bundle.css';
 
+Vue.use(Ionic);
 Vue.config.productionTip = false
 
 Vue.use(new VueSocketIO({
@@ -12,5 +16,6 @@ Vue.use(new VueSocketIO({
 
 
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app')

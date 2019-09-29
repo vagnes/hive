@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>HIVE</h1>
+    
     <p class="connected" v-if="isConnected">Connected</p>
     <p class="disconnected" v-else>Disconnected</p>
 

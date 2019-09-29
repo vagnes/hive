@@ -1,18 +1,22 @@
 <template>
-  <div class="container">
-    <p>{{ msg }}</p>
-    <p>{{ date_created }}</p>
-    <div class="button-container">
-      <div class="like-container">
-        <p class="likes">Likes: {{ likes }}</p>
-        <button v-on:click="addLike" type="button">Like</button>
-      </div>
-      <div class="report-container">
-        <p class="likes">Reports: {{ reports }}</p>
-        <button v-on:click="addReport" type="button">Report</button>
-      </div>
-    </div>
-  </div>
+  <ion-card>
+    <ion-card-subtitle>{{ date_created }}</ion-card-subtitle>
+    <ion-card-content>
+      <ion-text color="dark">{{ msg }}</ion-text>
+      <ion-grid>
+        <ion-row class="ion-float-right">
+          <ion-button fill="clear" v-on:click="addLike">
+            <ion-icon slot="icon-only" name="heart" size="small"></ion-icon>
+            {{ likes }}
+          </ion-button>
+          <ion-button fill="clear" v-on:click="addReport">
+            <ion-icon slot="icon-only" name="alert" size="small"></ion-icon>
+            {{ reports }}
+          </ion-button>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </template>
 
 <script>

@@ -9,3 +9,5 @@ It's built with the following technologies:
 * Flask
 * SQLAlchemy
 * SocketIO
+* Ionic
+* Capacitor

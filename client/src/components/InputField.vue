@@ -3,7 +3,6 @@
     <form @submit="sendMsg">
       <ion-col>
         <ion-item>
-          <ion-label>Msg:</ion-label>
           <ion-input
             :value="msg"
             @input="msg = $event.target.value"

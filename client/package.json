@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "ionic:build": "vue-cli-service build",
+    "ionic:serve": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -10,7 +12,7 @@
   "dependencies": {
     "@capacitor/android": "^1.1.0",
     "@capacitor/cli": "^1.1.0",
-    "@capacitor/core": "^1.1.0",
+    "@capacitor/core": "1.2.1",
     "core-js": "^2.6.5",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.10",

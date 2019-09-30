@@ -11,3 +11,5 @@ It's built with the following technologies:
 * SocketIO
 * Ionic
 * Capacitor
+
+Protip: Update to *Node 10* for a compilation time that is less than ideal but still better than the suicide inducing Node 8.
